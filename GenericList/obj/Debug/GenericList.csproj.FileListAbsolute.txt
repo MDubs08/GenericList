@@ -1,0 +1,6 @@
+C:\Users\MDubs\Documents\Visual Studio 2015\Projects\GenericList\GenericList\bin\Debug\GenericList.exe.config
+C:\Users\MDubs\Documents\Visual Studio 2015\Projects\GenericList\GenericList\bin\Debug\GenericList.exe
+C:\Users\MDubs\Documents\Visual Studio 2015\Projects\GenericList\GenericList\bin\Debug\GenericList.pdb
+C:\Users\MDubs\Documents\Visual Studio 2015\Projects\GenericList\GenericList\obj\Debug\GenericList.exe
+C:\Users\MDubs\Documents\Visual Studio 2015\Projects\GenericList\GenericList\obj\Debug\GenericList.pdb
+C:\Users\MDubs\Documents\Visual Studio 2015\Projects\GenericList\GenericList\obj\Debug\GenericList.csprojResolveAssemblyReference.cache
