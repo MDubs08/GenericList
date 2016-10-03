@@ -25,21 +25,6 @@ namespace GenericList
                 items = new T[capacity];
             length = capacity;
         }
-        public T this[int index]
-        {
-            get
-            {
-                if (index >= size)
-                    throw new Exception("Argument out of range");
-                return items[index];
-            }
-            set
-            {
-                if (index >= size)
-                    throw new Exception("Argument out of range");
-                items[index] = value;
-            }
-        }
         public void Add(T Item)
         {
             EnsureCapacity(size + 1);
@@ -98,17 +83,43 @@ namespace GenericList
         }
         public static GenericList<T> operator+(GenericList<T> genericlist1, GenericList<T> genericlist2)
         {
-            GenericList<T> newGenericList = new GenericList<T>();
-            newGenericList.items = genericlist1.items + genericlist2.items;
-            newGenericList.size = genericlist1.size + genericlist2.size;
-            return newGenericList;
+            GenericList<T> genericList = new GenericList<T>();
+            if (genericlist1 != null && genericlist2 != null)
+            {
+                foreach (T item in genericlist2)
+                {
+                    genericList.Add(item);
+                }
+                foreach (T item in genericlist1)
+                {
+                    genericList.Add(item);
+                }
+            }
+            return genericList;
+            //GenericList<T> newGenericList = new GenericList<T>();
+            //newGenericList.items = genericlist1.items + genericlist2.items;
+            //newGenericList.size = genericlist1.size + genericlist2.size;
+            //return newGenericList;
         }
         public static GenericList<T> operator-(GenericList<T> genericList1, GenericList<T> genericList2)
         {
-            GenericList<T> newGenericList = new GenericList<T>();
-            newGenericList = genericList1.items - genericList2.items;
-            newGenericList = genericList1.size - genericList2.size;
-            return newGenericList;
+            GenericList<T> genericList = new GenericList<T>();
+            if (genericList1 != null && genericList2 != null)
+            {
+                foreach (T item in genericList2)
+                {
+                    genericList.Remove(item);
+                }
+                foreach (T item in genericList1)
+                {
+                    genericList.Remove(item);
+                }
+            }
+            return genericList;
+            //GenericList<T> newGenericList = new GenericList<T>();
+            //newGenericList.items = genericList1 - genericList2.items;
+            //newGenericList.size = genericList1.size - genericList2.size;
+            //return newGenericList;
         }
         public int Length
         {
@@ -128,6 +139,7 @@ namespace GenericList
         {
             get { return size; }
         }
+
         IEnumerator<T> IEnumerable<T>.GetEnumerator()
         {
             for (int index = 0; index < size; index++)
@@ -149,6 +161,37 @@ namespace GenericList
             {
                 yield return items[index];
             }
+        }
+        public static IEnumerable<T> Zip(GenericList<T> genericList1, GenericList<T> genericList2)
+        {
+            GenericList<T> genericList = new GenericList<T>();
+            for (int index = 0; index < genericList.size; index++)
+            {
+                foreach (T item in genericList1)
+                {
+                    genericList.Add(item);
+                }
+                foreach (T item in genericList2)
+                {
+                    genericList.Add(item);
+                }
+                return genericList;
+            }
+            return genericList;
+
+            //GenericList<T> genericList = genericList1.Zip(genericList2, (first, second) =>
+            //for (int index = 0; index < genericList.size; index++)
+            //{
+                //if (genericList2.size > genericList1.size) ;
+                //{
+                //    yield return (second, first) => second + " " + first;
+                //}
+                //else if (genericList1.size > genericList2.size) ;
+                //{
+                //    yield return (first, second) => first + " " + second;
+                //}
+            //}
+            //yield return genericList;
         }
     }
 }
